@@ -1,0 +1,17 @@
+// Colors
+$red: #DD3450;
+$red-light: #F37388;
+
+.navbar {
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+
+        i { color: #DD3450; }
+        span { font-weight: 600; }
+    }
+    
+    
+}
