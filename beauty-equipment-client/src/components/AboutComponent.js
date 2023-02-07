@@ -27,7 +27,7 @@ function About () {
         return () => {
             window.removeEventListener("resize", handleContainer);
         }
-    }, );
+    }, []);
 
     return (
 

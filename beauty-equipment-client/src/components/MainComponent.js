@@ -2,6 +2,7 @@ import React from "react";
 import Header from './HeaderComponent';
 import Headline from "./HeadlineComponent";
 import About from "./AboutComponent";
+import Products from "./ProductsComponent";
 
 function Main () {
     return (
@@ -9,6 +10,7 @@ function Main () {
             <Header />
             <Headline />
             <About />
+            <Products />
         </React.Fragment>
     );
 }
