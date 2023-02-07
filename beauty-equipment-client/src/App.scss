@@ -1,6 +1,13 @@
 // Colors
 $red: #DD3450;
 $red-light: #F37388;
+$red-dark: #a14e5b;
+
+// Overwrite font sizes
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.875rem; }
+p  { font-size: 0.75rem; }
 
 .navbar {
 
@@ -13,5 +20,114 @@ $red-light: #F37388;
         span { font-weight: 600; }
     }
     
+}
+
+#headline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            max-height: 90%;
+        }
+    }
+
+    #headline-left {
+
+        #headline-text {
+            text-align: justify;
+            z-index: 10;
+        }
+        
+        .btn {
+            font-size: 0.75rem;
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(180deg, $red-light 0%, $red 80.21%);
+            border: none
+        }
+
+        .btn:hover {
+            background: linear-gradient(180deg, $red-dark 0%, $red 80.21%);
+        }
+
+        .btn-sm { width: 100%; } 
+
+        .custom-btn {
+            width: fit-content;
+
+            .custom-btn-text {
+                font-size: 0.75rem;
+            }
+
+            .custom-btn-line {
+                display: block;
+                border: 2px solid #EBEBEB;
+                border-radius: 6px;
+            }
+            
+            .active { border-color: $red; }
+        }  
+
+        .custom-btn:hover { cursor: pointer; }
+        .custom-btn * { pointer-events: none; }
+    }
+
+    #headline-right {
+
+        #img-bg {
+            position: relative;
+            margin-top: -3rem;
+            margin-left: -30px;
+            margin-right: -10px;
+            width: auto;
+            height: 380px;
+            z-index: 0;
+        }
+    }
     
+}
+
+#img-about-top {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    max-height: 90%;
+}
+
+#about { 
+    position: relative;
+    height: 100%;
+    background-color: #F5F6FC;
+
+    img {
+        position: absolute;
+        z-index: 0;
+        height: auto;
+        width: 100%;
+    }
+
+    .container {
+        position: relative;
+        padding: 2rem 10vw;
+        background-color: transparent;
+    }
+
+   #about-content {
+        padding: 1rem 2rem;
+        max-height: 100%;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(15px);
+        border-radius: 6px;
+        overflow-y: scroll;
+   }    
 }
