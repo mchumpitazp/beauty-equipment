@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'reactstrap';
+import MyForm from './FormComponent';
+import { Button, Col, Row, Container } from 'reactstrap';
 
 function Headline () {
     const [product, setProduct] = React.useState('PROFHILO');
@@ -33,6 +34,24 @@ function Headline () {
         }
     }
 
+    const orderProduct = (e) => {
+        const parent = e.target.parentNode;
+        const product = parent.querySelector('h6').querySelector('strong').innerHTML;
+        const formProduct = document.querySelectorAll('.formProductInput');
+        formProduct.forEach(item => item.value = product)
+
+        let form;
+        if (window.innerWidth < 992) {
+            form = document.querySelector('#form');
+            form.scrollIntoView({behavior: 'smooth'});
+        } else {
+            form = document.querySelector('form');
+        }
+
+        form.querySelectorAll('input').forEach(input => input.click());
+        // NOT CLICKING, SOLVE IT
+    }
+
     return (
         <Container id='headline'>
             <div id='headline-left'>
@@ -50,7 +69,7 @@ function Headline () {
 
                         <h4 className='mb-3'><strong id='headline-product-price'>$599</strong> </h4>
 
-                        <Button className='d-none d-sm-block'>
+                        <Button className='d-none d-sm-block' onClick={orderProduct}>
                             ORDER PRODUCT
                         </Button>
 
@@ -74,7 +93,14 @@ function Headline () {
             </div> 
 
             <div id='headline-right' className='d-none d-lg-block'>
-                <img id='img-bg' src='/bg-headline.png' alt='background-headline'/>
+                <img id='bg-headline' src='/bg-headline.png' alt='background-headline'/>
+
+                <Container id='headline-form-container'>
+                    <div id='headline-form'>
+                        <MyForm colClassName="col-12" />
+                    </div>
+                </Container>
+                
             </div>
         </Container>
     );

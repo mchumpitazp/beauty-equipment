@@ -6,7 +6,7 @@ function Header () {
         <Container>
             <Navbar>
                 <NavbarBrand href='/'>
-                    <img src="/logo.png" height='50px' alt="logo" />
+                    <img src="/logo.png" height='30px' alt="logo" />
                 </NavbarBrand>
 
                 <Nav navbar className='flex-row'>

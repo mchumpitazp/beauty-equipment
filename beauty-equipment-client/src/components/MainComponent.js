@@ -5,6 +5,9 @@ import About from "./AboutComponent";
 import Products from "./ProductsComponent";
 import Promo from "./PromoComponent";
 import Advantages from "./AdvantagesComponent";
+import Scope from "./ScopeComponent";
+import Stages from "./StagesComponent";
+import Footer from "./FooterComponent";
 
 function Main () {
     return (
@@ -15,6 +18,9 @@ function Main () {
             <Products />
             <Promo />
             <Advantages />
+            <Scope />
+            <Stages />
+            <Footer />
         </React.Fragment>
     );
 }

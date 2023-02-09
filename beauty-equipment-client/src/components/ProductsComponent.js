@@ -14,14 +14,24 @@ function RenderProducts ({products, current, quantity}) {
         const imgRef = parent.querySelector('img');
 
         if (e.type === 'mouseenter') {
-            imgRef.src = '/' + imgRef.alt + "2.png";
+            imgRef.src = '/' + imgRef?.alt + "2.png";
         } else {
-            imgRef.src = '/' + imgRef.alt + "1.png";
+            imgRef.src = '/' + imgRef?.alt + "1.png";
         }
-    }
+    };
 
     const orderProduct = (e) => {
-        console.log(e.target);
+        const parent = e.target.parentNode;
+        const product = parent.querySelector('h6').querySelector('strong').innerHTML;
+        const formProduct = document.querySelectorAll('.formProductInput');
+        formProduct.forEach(item => item.value = product)
+
+        const form = document.querySelector('#form');
+        form.scrollIntoView({behavior: 'smooth'});      
+
+        form.querySelectorAll('input').forEach(input => input.click());
+        // NOT CLICKING, SOLVE IT
+
     }
 
     return (
@@ -46,7 +56,7 @@ function RenderProducts ({products, current, quantity}) {
                                 {product.description}
                             </ReactReadMoreReadLess>
                         </p>
-                       <Button onClick={(e) => orderProduct(e)}>
+                       <Button onClick={orderProduct}>
                             ORDER PRODUCT
                        </Button>
                     </Col>
