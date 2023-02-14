@@ -1,6 +1,7 @@
 import React from 'react';
 import MyForm from './FormComponent';
 import { Button, Col, Row, Container } from 'reactstrap';
+import { baseUrl } from '../baseUrl';
 
 function Headline () {
     const [product, setProduct] = React.useState('PROFHILO');
@@ -18,14 +19,14 @@ function Headline () {
             e.target.querySelector('.custom-btn-line').classList.add('active');
 
             if (currentProduct === 'PROFHILO') {
-                document.querySelector('#img-product').src = '/profhilo.jpg';
+                document.querySelector('#img-product').src = baseUrl + '/products/profhilo.jpg';
                 document.querySelector('#img-product').alt = 'profhilo';
                 document.querySelector('#headline-product-name').innerHTML = 'PROFHILO (1*20ML)';
                 document.querySelector('#headline-product-des').innerHTML = 'It is the first stabilized hyaluronic acid (HA) product that is made without the use of chemical crosslinkers (BDDE) and is used to remodel skin and treat skin laxity, not just fill in wrinkles. Prevents aging of the skin of the face and body through bioremodeling or direct action on atonic skin. Hybrid hyaluronic acid complexes PROFHILO have a dual activity: moisturizing and stimulating action - the effect of low molecular weight HA (L-HA) HYDRO. creation of a "supporting frame" in the skin - the effect of high molecular weight HA (H-HA) LIFT.';
                 document.querySelector('#headline-product-price').innerHTML = '$599';
             }
             else {
-                document.querySelector('#img-product').src = '/juvederm.png';
+                document.querySelector('#img-product').src = baseUrl + '/products/juvederm.png';
                 document.querySelector('#img-product').alt = 'juvederm';
                 document.querySelector('#headline-product-name').innerHTML = 'JUVEDERM ULTRA 2';
                 document.querySelector('#headline-product-des').innerHTML = 'The Juvederm Ultra 2 filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.';
@@ -48,8 +49,7 @@ function Headline () {
             form = document.querySelector('form');
         }
 
-        form.querySelectorAll('input').forEach(input => input.click());
-        // NOT CLICKING, SOLVE IT
+        form.querySelectorAll('input').forEach(input => input.focus());
     }
 
     return (
@@ -58,7 +58,7 @@ function Headline () {
                 <Row className='align-items-center'>
                     <Col sm>
                         <div className='img-container'> 
-                            <img id='img-product' src='/profhilo.jpg' alt='profhilo'/>
+                            <img id='img-product' src={baseUrl + '/products/profhilo.jpg'} alt='profhilo'/>
                         </div>
                     </Col>
 
@@ -93,7 +93,7 @@ function Headline () {
             </div> 
 
             <div id='headline-right' className='d-none d-lg-block'>
-                <img id='bg-headline' src='/bg-headline.png' alt='background-headline'/>
+                <img id='bg-headline' src={baseUrl + '/frames/bg-headline.png'} alt='bg-headline'/>
 
                 <Container id='headline-form-container'>
                     <div id='headline-form'>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import { baseUrl } from "../baseUrl";
 
 function RenderImages ({images, current, quantity}) {
 
@@ -9,7 +10,7 @@ function RenderImages ({images, current, quantity}) {
                 return (
                     <Col key={index}>
                         <figure className="img-container">
-                            <img src={`/${image}.png`} alt={image}/>
+                            <img src={`${baseUrl}/scopes/${image}.png`} alt={image}/>
                         </figure>
                     </Col>
                 )

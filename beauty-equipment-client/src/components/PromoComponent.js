@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Col, Container, Row } from "reactstrap";
+import { baseUrl } from "../baseUrl";
 import Countdown from "./CountdownComponent";
 
 function Promo () {
@@ -7,20 +8,19 @@ function Promo () {
         const form = document.querySelector('#form');
         form.scrollIntoView({behavior: 'smooth'});      
 
-        form.querySelectorAll('input').forEach(input => input.click());
-        // NOT CLICKING, SOLVE IT 
+        form.querySelectorAll('input').forEach(input => input.focus());
     }
 
     return (
         <React.Fragment>
             <img id="img-promo-top" className='d-none d-sm-block'
-                src="/bg-promo-top.png" alt="bg-promo-top"/>
+                src={baseUrl + '/frames/bg-curve.png'} alt="bg-curve"/>
             
             <section id="promo">
             
                 <div id="promo-bg" className='d-none d-sm-flex'>
-                    <img id="promo-frame" src="/promo-frame.png" alt="promo-frame"/>
-                    <img id="promo-plant" src="/promo-plant.png" alt="promo-plant"/>
+                    <img id="promo-frame" src={baseUrl + "/frames/promo-frame.png"} alt="promo-frame"/>
+                    <img id="promo-plant" src={baseUrl + "/frames/promo-plant.png"} alt="promo-plant"/>
                 </div>
 
                 <Container className="px-5">

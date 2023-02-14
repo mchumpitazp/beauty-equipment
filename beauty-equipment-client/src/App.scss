@@ -293,7 +293,7 @@ form {
         z-index: 0;
         position: absolute;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         padding-right: 2rem;
         width: 100%;
         
@@ -328,7 +328,7 @@ form {
         z-index: 0;
         position: absolute;
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         padding-left: 2rem;
         margin-top: -2rem;
         width: 100%;
@@ -344,7 +344,7 @@ form {
         
         #stages-content-bottom {
             background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(3px);
             border-radius: 6px;
             width: 100%;
             padding: 1rem 2rem;

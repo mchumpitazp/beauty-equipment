@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Container, Row, Badge } from "reactstrap";
+import { baseUrl } from "../baseUrl";
 import MyForm from "./FormComponent";
 
 function Stages () {
@@ -12,7 +13,7 @@ function Stages () {
             <section id="stages">
 
                 <div id="stages-figure-top" className='d-none d-sm-flex'>
-                    <img id="stages-frame" src="/stages-frame.png" alt="stages-frame"/>
+                    <img id="stages-frame" src={baseUrl + "/frames/stages-frame.png"} alt="stages-frame"/>
                 </div>
 
                 <Container id="stages-container-top">
@@ -46,7 +47,7 @@ function Stages () {
                 </Container>
                 
                 <div id="stages-figure-bottom" className='d-none d-sm-flex'>
-                    <img id="stages-plant" src="/stages-plant.png" alt="stages-plant"/>
+                    <img id="stages-plant" src={baseUrl + "/frames/stages-plant.png"} alt="stages-plant"/>
                 </div>
 
                 <Container id="stages-container-bottom">

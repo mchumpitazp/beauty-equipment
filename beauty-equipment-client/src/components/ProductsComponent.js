@@ -1,6 +1,7 @@
 import React from "react";
 import ReactReadMoreReadLess from 'react-read-more-read-less';
 import { Button, Col, Container, Row } from "reactstrap";
+import { baseUrl } from "../baseUrl";
 
 function RenderProducts ({products, current, quantity}) {
 
@@ -14,9 +15,9 @@ function RenderProducts ({products, current, quantity}) {
         const imgRef = parent.querySelector('img');
 
         if (e.type === 'mouseenter') {
-            imgRef.src = '/' + imgRef?.alt + "2.png";
+            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "2.png";
         } else {
-            imgRef.src = '/' + imgRef?.alt + "1.png";
+            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "1.png";
         }
     };
 
@@ -29,8 +30,7 @@ function RenderProducts ({products, current, quantity}) {
         const form = document.querySelector('#form');
         form.scrollIntoView({behavior: 'smooth'});      
 
-        form.querySelectorAll('input').forEach(input => input.click());
-        // NOT CLICKING, SOLVE IT
+        form.querySelectorAll('input').forEach(input => input.focus());
 
     }
 
@@ -43,7 +43,8 @@ function RenderProducts ({products, current, quantity}) {
                         onMouseLeave={(e) => handleHover(e)}>   
 
                         <figure className="img-container">
-                            <img src={`/${product.image}1.png`} alt={product.image}/>
+                            <img src={`${baseUrl}/products/${product.image}1.png`} 
+                                alt={product.image}/>
                         </figure>
                         <h6><strong>{product.name}</strong></h6>
                         <h5><strong>{`$ ${product.price}`}</strong></h5>
