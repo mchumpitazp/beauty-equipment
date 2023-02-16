@@ -3,12 +3,19 @@ import { Button, Col, Container, Row } from "reactstrap";
 import { baseUrl } from "../baseUrl";
 import Countdown from "./CountdownComponent";
 
-function Promo () {
+function Promo ({ toggle, setProduct }) {
+
+    // v1: Scroll until form and focus on product
     const orderProduct = () => {
         const form = document.querySelector('#form');
         form.scrollIntoView({behavior: 'smooth'});      
 
         form.querySelectorAll('input').forEach(input => input.focus());
+    }
+
+    const handleClick = () => {
+        toggle();
+        setProduct('');
     }
 
     return (
@@ -29,7 +36,7 @@ function Promo () {
                             <h5><strong>Get 25% off on your first order</strong></h5>
                             <p>Contact us for a discount. Promotion time is limited!</p>
                             <div className="d-flex">
-                                <Button onClick={orderProduct}>
+                                <Button onClick={handleClick}>
                                     ORDER A PRODUCT
                                 </Button>
                             </div>

@@ -3,14 +3,14 @@ import MyForm from './FormComponent';
 import { Button, Col, Row, Container } from 'reactstrap';
 import { baseUrl } from '../baseUrl';
 
-function Headline () {
-    const [product, setProduct] = React.useState('PROFHILO');
+function Headline ({ toggle, setProduct }) {
+    const [product, setHeadlineProduct] = React.useState('PROFHILO');
 
     const handleProduct = (e) => {
         const currentProduct = e.target.querySelector('.custom-btn-text').innerHTML;
         
         if (currentProduct !== product) {
-            setProduct(currentProduct);
+            setHeadlineProduct(currentProduct);
 
             document.querySelectorAll('.custom-btn-line').forEach((line) => {
                 line.classList.remove('active');
@@ -35,6 +35,7 @@ function Headline () {
         }
     }
 
+    // v1: Scroll until form and focus on product
     const orderProduct = (e) => {
         const parent = e.target.parentNode;
         const product = parent.querySelector('h6').querySelector('strong').innerHTML;
@@ -50,6 +51,15 @@ function Headline () {
         }
 
         form.querySelectorAll('input').forEach(input => input.focus());
+    }
+
+    const handleClick = () => {
+        toggle();
+        if (product === 'PROFHILO') {
+            setProduct('PROFHILO (1*20ML)');
+        } else {
+            setProduct('JUVEDERM ULTRA 2');
+        }
     }
 
     return (
@@ -69,11 +79,11 @@ function Headline () {
 
                         <h4 className='mb-3'><strong id='headline-product-price'>$599</strong> </h4>
 
-                        <Button className='d-none d-sm-block' onClick={orderProduct}>
+                        <Button className='d-none d-sm-block' onClick={handleClick}>
                             ORDER PRODUCT
                         </Button>
 
-                        <Button className='d-block d-sm-none btn-sm'>
+                        <Button className='d-block d-sm-none btn-sm' onClick={handleClick}>
                             ORDER PRODUCT
                         </Button>
                     </Col>
@@ -97,7 +107,10 @@ function Headline () {
 
                 <Container id='headline-form-container'>
                     <div id='headline-form'>
-                        <MyForm colClassName="col-12" />
+                        <Row>
+                            <h5 className='mb-3'><strong>Submit your application</strong></h5>
+                        </Row>
+                        <MyForm colClassName="col-12" buttonInner="CONTACT WITH ME!"/>
                     </div>
                 </Container>
                 

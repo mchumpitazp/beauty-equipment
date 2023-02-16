@@ -28,9 +28,13 @@ p  { font-size: 0.75rem; }
         align-items: center;
         font-size: 1rem;
 
+        .navbar-mobile { font-size: 0.5rem; }
+
         i { color: #DD3450; }
         span { font-weight: 600; }
     }
+
+    .nav-item-sm { font-size: 0.8rem; }
     
 }
 
@@ -363,5 +367,15 @@ footer {
 
     .img-container {
         width: 18rem;
+    }
+
+    a {
+        font-size: 0.875rem;        
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover { 
+        color: $red; 
     }
 }

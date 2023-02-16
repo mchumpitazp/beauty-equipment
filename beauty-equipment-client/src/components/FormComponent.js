@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Row, Col, FormGroup, Label, Input, Button, Alert, FormFeedback, Spinner } from 'reactstrap';
 
-function MyForm ({colClassName, setId=false}) {
+function MyForm ({colClassName, setId=false, initProduct='', buttonInner}) {
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [product, setProduct] = React.useState('');
@@ -13,6 +13,10 @@ function MyForm ({colClassName, setId=false}) {
     const [success, setSuccess] = React.useState(false);
     const [validation, setValidation] = React.useState(false);
     const [spinnerOpen, setSpinnerOpen] = React.useState(false);
+
+    React.useEffect(() => {
+        setProduct(initProduct);
+    }, [initProduct]);
 
     React.useEffect(() => {
         let timeout;
@@ -83,11 +87,7 @@ function MyForm ({colClassName, setId=false}) {
     }
 
     return (
-        <Form id={setId? "form" : ""} noValidate onSubmit={handleSubmit}>
-            <Row>
-                <h5 className='mb-3'><strong>Submit your application</strong></h5>
-            </Row>
-            
+        <Form id={setId? "form" : ""} noValidate onSubmit={handleSubmit}>            
             <Row>
                 <Col className={colClassName}>
                     <FormGroup>
@@ -120,6 +120,7 @@ function MyForm ({colClassName, setId=false}) {
                         <Label>Name of Product *</Label>       
                         <Input className='formProductInput'
                             type='text' required
+                            value={product}
                             onChange={e => setProduct(e.target.value)}
                             onClick={() => setProductVal(true)}
                             invalid={productVal===false}/>
@@ -143,7 +144,7 @@ function MyForm ({colClassName, setId=false}) {
                     </Alert>
 
                     <Button onClick={(e) => handleSubmit(e)}>
-                        CONTACT WITH ME!
+                        {buttonInner}
                     </Button>
                 </Col>
                 <Col className="col-12">

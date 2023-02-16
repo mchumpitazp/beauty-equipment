@@ -3,7 +3,7 @@ import ReactReadMoreReadLess from 'react-read-more-read-less';
 import { Button, Col, Container, Row } from "reactstrap";
 import { baseUrl } from "../baseUrl";
 
-function RenderProducts ({products, current, quantity}) {
+function RenderProducts ({ products, current, quantity, toggle, setProduct }) {
 
     const handleHover = (e) => {
         let parent = e.target;
@@ -21,6 +21,7 @@ function RenderProducts ({products, current, quantity}) {
         }
     };
 
+    // v1: Scroll until form and focus on product clicked
     const orderProduct = (e) => {
         const parent = e.target.parentNode;
         const product = parent.querySelector('h6').querySelector('strong').innerHTML;
@@ -31,7 +32,11 @@ function RenderProducts ({products, current, quantity}) {
         form.scrollIntoView({behavior: 'smooth'});      
 
         form.querySelectorAll('input').forEach(input => input.focus());
+    }
 
+    const handleClick = (product) => {
+        toggle();
+        setProduct(product.toUpperCase());
     }
 
     return (
@@ -57,7 +62,7 @@ function RenderProducts ({products, current, quantity}) {
                                 {product.description}
                             </ReactReadMoreReadLess>
                         </p>
-                       <Button onClick={orderProduct}>
+                       <Button onClick={() => handleClick(product.name)}>
                             ORDER PRODUCT
                        </Button>
                     </Col>
@@ -67,7 +72,7 @@ function RenderProducts ({products, current, quantity}) {
     );
 }
 
-function Products () {
+function Products ({ toggle, setProduct }) {
     
     const [current, setCurrent] = React.useState(0);
     const [quantity, setQuantity] = React.useState();
@@ -155,7 +160,7 @@ function Products () {
             </div>
             
             <Row>
-                <RenderProducts products={products} current={current} quantity={quantity}/>
+                <RenderProducts products={products} current={current} quantity={quantity} toggle={toggle} setProduct={setProduct}/>
             </Row>
         </Container>
     );

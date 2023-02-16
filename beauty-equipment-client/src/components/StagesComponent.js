@@ -8,7 +8,7 @@ function Stages () {
     return (
         <React.Fragment>
             <img id="img-stages-top" className='d-none d-sm-block'
-                src="/bg-stages-top.png" alt="bg-stages-top"/>
+                src={baseUrl + '/frames/bg-curve.png'} alt="bg-stages-top"/>
 
             <section id="stages">
 
@@ -53,7 +53,10 @@ function Stages () {
                 <Container id="stages-container-bottom">
 
                     <div id="stages-content-bottom">
-                        <MyForm colClassName="col-12 col-md-3" setId={true}/>
+                        <Row>
+                            <h5 className='mb-3'><strong>Submit your application</strong></h5>
+                        </Row>
+                        <MyForm colClassName="col-12 col-md-3" setId={true} buttonInner="CONTACT WITH ME!"/>
                         {/* <Form>
                             <Row className="align-items-center">
                                 <Col className="col-12 col-md-3">
