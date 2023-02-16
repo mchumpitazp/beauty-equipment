@@ -1,43 +1,51 @@
 import React from "react";
 
 function Countdown () {
-    const [days, setDays] = React.useState(0);
-    const [hours, setHours] = React.useState(0);
-    const [minutes, setMinutes] = React.useState(0);
-    const [seconds, setSeconds] = React.useState(0);
+    const [timer, setTimer] = React.useState({ days: 99, hours: 99, minutes: 99, seconds: 99 });
 
-    const resetDeadline = () => {
-        let deadline = new Date();
-        deadline.setDate(deadline.getDate() + 14);
-        window.localStorage.setItem('deadline', deadline);
+    const setDeadline = (reset = false) => {        
+        // const value = 'remove';
+        // window.localStorage.setItem('deadline', value);
+        // console.log(window.localStorage.getItem('deadline'));
+        // window.localStorage.removeItem('deadline');
+
+        const deadline = window.localStorage.getItem('deadline');
+
+        if (!deadline || reset) {
+            let newDeadline = new Date();
+            newDeadline.setDate(newDeadline.getDate() + 14);
+            window.localStorage.setItem('deadline', newDeadline);
+        }
     }
     
     const getTime = () => {
         let deadline = window.localStorage.getItem('deadline');
         const time = Date.parse(deadline) - Date.now();
 
-        setDays(Math.floor(time / (1000 * 60 * 60 * 24)));
-        setHours(Math.floor((time / (1000 * 60 * 60)) % 24));
-        setMinutes(Math.floor((time / 1000 / 60) % 60));
-        setSeconds(Math.floor((time / 1000) % 60));
+        setTimer({
+            days:    Math.floor(time / (1000 * 60 * 60 * 24)),
+            hours:   Math.floor((time / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((time / 1000 / 60) % 60),
+            seconds: Math.floor((time / 1000) % 60)
+        })
     };
 
     React.useEffect(() => {
-        resetDeadline();
+        setDeadline();
 
         const interval = setInterval(() => getTime(), 1000);
         return () => clearInterval(interval);
     }, []);
 
     React.useEffect(() => {
-        if (hours === 0) {
-            resetDeadline();
+        if (Object.values(timer).every(value => value === 0)) {
+            setDeadline(true);
         }
-    }, [hours]);
+    }, [timer.days]);
 
     return (
         <span>
-            {days} days {hours}:{minutes < 10? '0' + minutes : minutes}:{seconds < 10? '0' + seconds : seconds}
+            {timer.days} days {timer.hours}:{timer.minutes < 10? '0' + timer.minutes : timer.minutes}:{timer.seconds < 10? '0' + timer.seconds : timer.seconds}
         </span>
     );
 }

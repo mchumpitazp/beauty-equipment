@@ -4,7 +4,7 @@ import MyForm from "./FormComponent";
 
 function ModalOrder ({ modal, toggle, product }) {
     return (
-        <Modal isOpen={modal} toggle={toggle}>
+        <Modal isOpen={modal} toggle={toggle} centered>
             <ModalHeader toggle={toggle}><h4>New product order</h4></ModalHeader>
             <ModalBody>
                 <MyForm colClassName="col-12" initProduct={product} buttonInner="ORDER PRODUCT"/>

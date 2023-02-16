@@ -36,7 +36,10 @@ function Promo ({ toggle, setProduct }) {
                             <h5><strong>Get 25% off on your first order</strong></h5>
                             <p>Contact us for a discount. Promotion time is limited!</p>
                             <div className="d-flex">
-                                <Button onClick={handleClick}>
+                                <Button className="d-none d-sm-block" onClick={handleClick}>
+                                    ORDER A PRODUCT
+                                </Button>
+                                <Button className="d-flex d-sm-none btn-sm" onClick={handleClick}>
                                     ORDER A PRODUCT
                                 </Button>
                             </div>

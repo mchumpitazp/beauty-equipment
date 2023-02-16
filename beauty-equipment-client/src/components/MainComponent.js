@@ -9,12 +9,14 @@ import Scope from "./ScopeComponent";
 import Stages from "./StagesComponent";
 import Footer from "./FooterComponent";
 import ModalOrder from "./ModalOrderComponent";
+import ModalCookies from "./ModalCookiesComponent";
 
 function Main () {
     const [modal, setModal] = React.useState(false);
     const [product, setProduct] = React.useState('');
-
     const toggleModal = () => setModal(!modal);
+
+    const checkCookie = document.cookie.indexOf("CookieBy=BeautyEquipment");
 
     return (
         <React.Fragment>
@@ -28,6 +30,11 @@ function Main () {
             <Stages />
             <Footer />
             <ModalOrder modal={modal} toggle={toggleModal} product={product}/>
+
+            {
+                (checkCookie === -1) ?
+                <ModalCookies /> : null 
+            }
         </React.Fragment>
     );
 }
