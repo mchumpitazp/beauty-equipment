@@ -36,9 +36,7 @@ function Countdown () {
             }
         }
 
-        const baseDeadline = new Date(year, month, 14);
-        console.log(baseDeadline)
-        
+        const baseDeadline = new Date(year, month, 14);        
         const time = baseDeadline - Date.now();
 
         setTimer({

@@ -13,7 +13,7 @@ import ModalCookies from "./ModalCookiesComponent";
 
 function Main () {
     const [modal, setModal] = React.useState(false);
-    const [product, setProduct] = React.useState('');
+    const [modalProduct, setModalProduct] = React.useState('');
     const toggleModal = () => setModal(!modal);
 
     const checkCookie = document.cookie.indexOf("CookieBy=BeautyEquipment");
@@ -21,15 +21,15 @@ function Main () {
     return (
         <React.Fragment>
             <Header />
-            <Headline toggle={toggleModal} setProduct={setProduct} />
+            <Headline toggleModal={toggleModal} setModalProduct={setModalProduct} />
             <About />
-            <Products toggle={toggleModal} setProduct={setProduct} />
-            <Promo toggle={toggleModal} setProduct={setProduct} />
+            <Products toggle={toggleModal} setProduct={setModalProduct} />
+            <Promo toggleModal={toggleModal} setModalProduct={setModalProduct} />
             <Advantages />
             <Scope />
             <Stages />
             <Footer />
-            <ModalOrder modal={modal} toggle={toggleModal} product={product}/>
+            <ModalOrder modal={modal} toggle={toggleModal} product={modalProduct}/>
 
             {
                 (checkCookie === -1) ?

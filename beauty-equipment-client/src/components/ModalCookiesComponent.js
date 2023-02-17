@@ -18,7 +18,7 @@ function ModalCookies () {
 
     return (
         <Modal id="modal-cookies" isOpen={cookies} toggle={toggle} centered>
-            <ModalHeader toggle={toggle}><h4>Cookies consent</h4></ModalHeader>
+            <ModalHeader toggle={toggle}>Cookies consent</ModalHeader>
             <ModalBody className="d-flex flex-column align-items-center my-2">
                 <img src={`${baseUrl}/frames/cookies.jpg`} alt="cookies" width="100px"/>
                 <p className="mx-5 my-3">This website uses cookies in order to offer you the best experience on our site.</p>

@@ -2,104 +2,146 @@ import React from 'react';
 import MyForm from './FormComponent';
 import { Button, Col, Row, Container } from 'reactstrap';
 import { baseUrl } from '../baseUrl';
+import $ from 'jquery';
 
-function Headline ({ toggle, setProduct }) {
-    const [product, setHeadlineProduct] = React.useState('PROFHILO');
+const products = [
+    {
+        id: 1,
+        title: 'profhilo (1*20ml)',
+        name: 'profhilo',
+        image: '/products/profhilo.jpg',
+        price: 22,
+        description: 'It is the first stabilized hyaluronic acid (HA) product that is made without the use of chemical crosslinkers (BDDE) and is used to remodel skin and treat skin laxity, not just fill in wrinkles. Prevents aging of the skin of the face and body through bioremodeling or direct action on atonic skin. Hybrid hyaluronic acid complexes PROFHILO have a dual activity: moisturizing and stimulating action - the effect of low molecular weight HA (L-HA) HYDRO. creation of a "supporting frame" in the skin - the effect of high molecular weight HA (H-HA) LIFT.'
+    },
+    {
+        id: 2,
+        title: 'juvederm ultra',
+        name: 'juvederm',
+        image: '/products/juvederm.jpg',
+        price: 26,
+        description: 'The Juvederm Ultra filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.'
+    },
+    {
+        id: 3,
+        title: 'juvederm ultra 2',
+        name: 'juvederm 2',
+        image: '/products/juvederm2.jpg',
+        price: 23,
+        description: 'The Juvederm Ultra 2 filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.'
+    },
+    {
+        id: 4,
+        title: 'juvederm ultra 3',
+        name: 'juvederm 3',
+        image: '/products/juvederm3.jpg',
+        price: 26,
+        description: 'The Juvederm Ultra 3 filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.'
+    },
+    {
+        id: 5,
+        title: 'juvederm ultra 4',
+        name: 'juvederm 4',
+        image: '/products/juvederm4.jpg',
+        price: 26,
+        description: 'The Juvederm Ultra 4 filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.'
+    },
+    {
+        id: 6,
+        title: 'juvederm ultra smile',
+        name: 'juvederm smile',
+        image: '/products/juvederm-smile.jpg',
+        price: 23,
+        description: 'The Juvederm Ultra Smile filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.'
+    }
+]
 
-    const handleProduct = (e) => {
-        const currentProduct = e.target.querySelector('.custom-btn-text').innerHTML;
-        
-        if (currentProduct !== product) {
-            setHeadlineProduct(currentProduct);
+function RenderProduct (props) {
 
-            document.querySelectorAll('.custom-btn-line').forEach((line) => {
-                line.classList.remove('active');
-            });
-
-            e.target.querySelector('.custom-btn-line').classList.add('active');
-
-            if (currentProduct === 'PROFHILO') {
-                document.querySelector('#img-product').src = baseUrl + '/products/profhilo.jpg';
-                document.querySelector('#img-product').alt = 'profhilo';
-                document.querySelector('#headline-product-name').innerHTML = 'PROFHILO (1*20ML)';
-                document.querySelector('#headline-product-des').innerHTML = 'It is the first stabilized hyaluronic acid (HA) product that is made without the use of chemical crosslinkers (BDDE) and is used to remodel skin and treat skin laxity, not just fill in wrinkles. Prevents aging of the skin of the face and body through bioremodeling or direct action on atonic skin. Hybrid hyaluronic acid complexes PROFHILO have a dual activity: moisturizing and stimulating action - the effect of low molecular weight HA (L-HA) HYDRO. creation of a "supporting frame" in the skin - the effect of high molecular weight HA (H-HA) LIFT.';
-                document.querySelector('#headline-product-price').innerHTML = '€ 22';
-            }
-            else {
-                document.querySelector('#img-product').src = baseUrl + '/products/juvederm.jpg';
-                document.querySelector('#img-product').alt = 'juvederm';
-                document.querySelector('#headline-product-name').innerHTML = 'JUVEDERM ULTRA';
-                document.querySelector('#headline-product-des').innerHTML = 'The Juvederm Ultra filler is designed to correct moderate wrinkles. It is used exclusively on young skin (25-30 years). The drug is based on a unique substance of hyaluronic acid 3D MATRIX. It is this formula that provides a stable prolonged result - from a year or more.';
-                document.querySelector('#headline-product-price').innerHTML = '€ 26';
-            }
-        }
+    const handleClick = (e) => {
+        const productClicked = $(e.target).siblings('#headline-product-title').eq(0).text();
+        props.setModalProduct(productClicked);
+        props.toggleModal();
     }
 
-    // v1: Scroll until form and focus on product
-    // const orderProduct = (e) => {
-    //     const parent = e.target.parentNode;
-    //     const product = parent.querySelector('h6').querySelector('strong').innerHTML;
-    //     const formProduct = document.querySelectorAll('.formProductInput');
-    //     formProduct.forEach(item => item.value = product)
+    return (
+        <Row className='align-items-center'>
+            <Col sm>
+                <div className='img-container'> 
+                    <img src={baseUrl + props.product.image} alt={props.product.name}/>
+                </div>
+            </Col>
 
-    //     let form;
-    //     if (window.innerWidth < 992) {
-    //         form = document.querySelector('#form');
-    //         form.scrollIntoView({behavior: 'smooth'});
-    //     } else {
-    //         form = document.querySelector('form');
-    //     }
+            <Col sm id='headline-text'>
+                <h6 id='headline-product-title'>{props.product.title}</h6>
 
-    //     form.querySelectorAll('input').forEach(input => input.focus());
-    // }
+                <p id='headline-product-des'>{props.product.description}</p>
 
-    const handleClick = () => {
-        toggle();
-        if (product === 'PROFHILO') {
-            setProduct('PROFHILO (1*20ML)');
-        } else {
-            setProduct('JUVEDERM ULTRA');
+                <h4 className='mb-3'><strong id='headline-product-price'>€ {props.product.price}</strong> </h4>
+
+                <Button className='d-none d-sm-block' onClick={handleClick}>
+                    ORDER PRODUCT
+                </Button>
+
+                <Button className='d-block d-sm-none btn-sm' onClick={handleClick}>
+                    ORDER PRODUCT
+                </Button>
+            </Col>
+        </Row>
+    );  
+}
+
+const MemoizedRenderButtons = React.memo (
+    function RenderButtons ({ setIndex }) {
+
+        const handleClick = (e) => {
+            // Update index
+            const newIndex = e.target.getAttribute('data-key');
+            setIndex(newIndex);
+    
+            // Update classes
+            $('.btn-headline-line').removeClass('active');
+            $(e.target).children('.btn-headline-line').addClass('active');
         }
+    
+        return (
+            <Row className='justify-content-center mt-3'>
+                { products.map((product, index) => {
+                    return (
+                        <div key={index} data-key={index} className='btn-headline mx-2 my-1' onClick={handleClick}>
+                            <span className='btn-headline-text'>{product.name}</span>
+                            {                    
+                                index === 0 ?
+                                <span className='btn-headline-line active'></span>
+                                :
+                                <span className='btn-headline-line'></span>
+                            }
+                        </div>
+                    );
+                }) }
+            </Row>
+        );
     }
+)
+
+
+
+function Headline (props) {
+    const [index, setIndex] = React.useState(0)
+    const [product, setProduct] = React.useState(products[index]);
+
+    React.useEffect(() => {
+        setProduct(products[index]);
+    }, [index])
 
     return (
         <Container id='headline'>
             <div id='headline-left'>
-                <Row className='align-items-center'>
-                    <Col sm>
-                        <div className='img-container'> 
-                            <img id='img-product' src={baseUrl + '/products/profhilo.jpg'} alt='profhilo'/>
-                        </div>
-                    </Col>
-
-                    <Col sm id='headline-text'>
-                        <h6><strong id='headline-product-name'>PROFHILO (1*20ML)</strong></h6>
-
-                        <p id='headline-product-des'>It is the first stabilized hyaluronic acid (HA) product that is made without the use of chemical crosslinkers (BDDE) and is used to remodel skin and treat skin laxity, not just fill in wrinkles. Prevents aging of the skin of the face and body through bioremodeling or direct action on atonic skin. Hybrid hyaluronic acid complexes PROFHILO have a dual activity: moisturizing and stimulating action - the effect of low molecular weight HA (L-HA) HYDRO. creation of a "supporting frame" in the skin - the effect of high molecular weight HA (H-HA) LIFT.</p>
-
-                        <h4 className='mb-3'><strong id='headline-product-price'>€ 22</strong> </h4>
-
-                        <Button className='d-none d-sm-block' onClick={handleClick}>
-                            ORDER PRODUCT
-                        </Button>
-
-                        <Button className='d-block d-sm-none btn-sm' onClick={handleClick}>
-                            ORDER PRODUCT
-                        </Button>
-                    </Col>
-                </Row>
-
-                <Row className='justify-content-center mt-3'>
-                    <div className='custom-btn me-3' onClick={(e) => handleProduct(e)}>
-                        <span className='custom-btn-text'>PROFHILO</span>
-                        <span className='custom-btn-line active'></span>
-                    </div>
-
-                    <div className='custom-btn ms-3' onClick={(e) => handleProduct(e)}>
-                        <span className='custom-btn-text'>JUVEDERM</span>
-                        <span className='custom-btn-line'></span>
-                    </div>
-                </Row>
+                <RenderProduct 
+                    product={product}
+                    toggleModal={props.toggleModal}
+                    setModalProduct={props.setModalProduct} />
+                <MemoizedRenderButtons  
+                    setIndex={setIndex} />
             </div> 
 
             <div id='headline-right' className='d-none d-lg-block'>
@@ -113,7 +155,6 @@ function Headline ({ toggle, setProduct }) {
                         <MyForm colClassName="col-12" buttonInner="CONTACT WITH ME!"/>
                     </div>
                 </Container>
-                
             </div>
         </Container>
     );

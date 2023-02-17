@@ -3,7 +3,7 @@ import { Button, Col, Container, Row } from "reactstrap";
 import { baseUrl } from "../baseUrl";
 import Countdown from "./CountdownComponent";
 
-function Promo ({ toggle, setProduct }) {
+function Promo (props) {
 
     // v1: Scroll until form and focus on product
     /* const orderProduct = () => {
@@ -14,8 +14,8 @@ function Promo ({ toggle, setProduct }) {
     } */
 
     const handleClick = () => {
-        toggle();
-        setProduct('');
+        props.toggleModal();
+        props.setModalProduct('');
     }
 
     return (

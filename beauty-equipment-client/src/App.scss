@@ -9,7 +9,7 @@ h5 { font-size: 1rem; }
 h6 { font-size: 0.875rem; }
 p  { font-size: 0.75rem; }
 
-// Similar global button
+// Overwrite buttons
 .btn {
     font-size: 0.75rem;
     padding: 0.6rem 1.5rem;
@@ -20,6 +20,8 @@ p  { font-size: 0.75rem; }
 .btn:hover {
     background: linear-gradient(180deg, $red-dark 0%, $red 80.21%);
 }
+
+// Sections
 
 .navbar {
 
@@ -50,18 +52,24 @@ p  { font-size: 0.75rem; }
         #headline-text {
             text-align: justify;
             z-index: 10;
+
+            #headline-product-title { 
+                text-transform: uppercase;
+                font-weight: bold;
+            }
         }
 
         .btn-sm { width: 100%; } 
 
-        .custom-btn {
+        .btn-headline {
             width: fit-content;
 
-            .custom-btn-text {
+            .btn-headline-text {
                 font-size: 0.75rem;
+                text-transform: uppercase;
             }
 
-            .custom-btn-line {
+            .btn-headline-line {
                 display: block;
                 border: 2px solid #EBEBEB;
                 border-radius: 6px;
@@ -70,8 +78,8 @@ p  { font-size: 0.75rem; }
             .active { border-color: $red; }
         }  
 
-        .custom-btn:hover { cursor: pointer; }
-        .custom-btn * { pointer-events: none; }
+        .btn-headline:hover { cursor: pointer; }
+        .btn-headline * { pointer-events: none; }
     }
 
     #headline-right {

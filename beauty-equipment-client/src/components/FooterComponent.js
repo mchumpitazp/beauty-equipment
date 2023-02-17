@@ -31,7 +31,7 @@ function Footer () {
                         <div className="d-flex flex-column justify-content-around">
                             <div className="d-flex align-items-center my-1">
                                 <i className="bi-geo me-2"></i>
-                                <h6 className="m-0">4th Upper Mikhailovsky proezd, 10k2, Moscow, 115419</h6>
+                                <h6 className="m-0">Maneezi 8-9, Tallinn, 10115 Harjumaa, Estonia</h6>
                             </div>
                             <div className="d-flex align-items-center my-1">
                                 <i className="bi-envelope me-2"></i>
