@@ -36,22 +36,22 @@ function Headline ({ toggle, setProduct }) {
     }
 
     // v1: Scroll until form and focus on product
-    const orderProduct = (e) => {
-        const parent = e.target.parentNode;
-        const product = parent.querySelector('h6').querySelector('strong').innerHTML;
-        const formProduct = document.querySelectorAll('.formProductInput');
-        formProduct.forEach(item => item.value = product)
+    // const orderProduct = (e) => {
+    //     const parent = e.target.parentNode;
+    //     const product = parent.querySelector('h6').querySelector('strong').innerHTML;
+    //     const formProduct = document.querySelectorAll('.formProductInput');
+    //     formProduct.forEach(item => item.value = product)
 
-        let form;
-        if (window.innerWidth < 992) {
-            form = document.querySelector('#form');
-            form.scrollIntoView({behavior: 'smooth'});
-        } else {
-            form = document.querySelector('form');
-        }
+    //     let form;
+    //     if (window.innerWidth < 992) {
+    //         form = document.querySelector('#form');
+    //         form.scrollIntoView({behavior: 'smooth'});
+    //     } else {
+    //         form = document.querySelector('form');
+    //     }
 
-        form.querySelectorAll('input').forEach(input => input.focus());
-    }
+    //     form.querySelectorAll('input').forEach(input => input.focus());
+    // }
 
     const handleClick = () => {
         toggle();
