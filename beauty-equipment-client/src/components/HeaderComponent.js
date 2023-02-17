@@ -7,8 +7,8 @@ function Header () {
         <Container>
             <Navbar>
                 <NavbarBrand href='/'>
-                    <img className='d-none d-sm-block' src={baseUrl+'/frames/logo.png'} height='30px' alt="logo" />
-                    <img className='d-block d-sm-none' src={baseUrl+'/frames/logo.png'} height='20px' alt="logo" />
+                    <img className='d-none d-sm-block' src={baseUrl+'/frames/logo.jpg'} height='30px' alt="logo" />
+                    <img className='d-block d-sm-none' src={baseUrl+'/frames/logo.jpg'} height='20px' alt="logo" />
                 </NavbarBrand>
 
                 <Nav navbar className='flex-row'>

@@ -8,7 +8,7 @@ function Stages () {
     return (
         <React.Fragment>
             <img id="img-stages-top" className='d-none d-sm-block'
-                src={baseUrl + '/frames/bg-curve.png'} alt="bg-stages-top"/>
+                src={baseUrl + '/frames/bg-curve.jpg'} alt="bg-stages-top"/>
 
             <section id="stages">
 

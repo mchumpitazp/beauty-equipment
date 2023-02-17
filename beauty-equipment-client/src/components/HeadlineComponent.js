@@ -103,7 +103,7 @@ function Headline ({ toggle, setProduct }) {
             </div> 
 
             <div id='headline-right' className='d-none d-lg-block'>
-                <img id='bg-headline' src={baseUrl + '/frames/bg-headline.png'} alt='bg-headline'/>
+                <img id='bg-headline' src={baseUrl + '/frames/bg-headline.jpg'} alt='bg-headline'/>
 
                 <Container id='headline-form-container'>
                     <div id='headline-form'>

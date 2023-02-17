@@ -15,14 +15,14 @@ function RenderProducts ({ products, current, quantity, toggle, setProduct }) {
         const imgRef = parent.querySelector('img');
 
         if (e.type === 'mouseenter') {
-            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "2.png";
+            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "2.jpg";
         } else {
-            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "1.png";
+            imgRef.src = baseUrl + '/products/' + imgRef?.alt + "1.jpg";
         }
     };
 
     // v1: Scroll until form and focus on product clicked
-    const orderProduct = (e) => {
+    /* const orderProduct = (e) => {
         const parent = e.target.parentNode;
         const product = parent.querySelector('h6').querySelector('strong').innerHTML;
         const formProduct = document.querySelectorAll('.formProductInput');
@@ -32,7 +32,7 @@ function RenderProducts ({ products, current, quantity, toggle, setProduct }) {
         form.scrollIntoView({behavior: 'smooth'});      
 
         form.querySelectorAll('input').forEach(input => input.focus());
-    }
+    } */
 
     const handleClick = (product) => {
         toggle();
@@ -48,7 +48,7 @@ function RenderProducts ({ products, current, quantity, toggle, setProduct }) {
                         onMouseLeave={(e) => handleHover(e)}>   
 
                         <figure className="img-container">
-                            <img src={`${baseUrl}/products/${product.image}1.png`} 
+                            <img src={`${baseUrl}/products/${product.image}1.jpg`} 
                                 alt={product.image}/>
                         </figure>
                         <h6><strong>{product.name}</strong></h6>

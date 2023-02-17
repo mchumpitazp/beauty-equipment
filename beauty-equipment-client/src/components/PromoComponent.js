@@ -6,12 +6,12 @@ import Countdown from "./CountdownComponent";
 function Promo ({ toggle, setProduct }) {
 
     // v1: Scroll until form and focus on product
-    const orderProduct = () => {
+    /* const orderProduct = () => {
         const form = document.querySelector('#form');
         form.scrollIntoView({behavior: 'smooth'});      
 
         form.querySelectorAll('input').forEach(input => input.focus());
-    }
+    } */
 
     const handleClick = () => {
         toggle();
@@ -21,7 +21,7 @@ function Promo ({ toggle, setProduct }) {
     return (
         <React.Fragment>
             <img id="img-promo-top" className='d-none d-sm-block'
-                src={baseUrl + '/frames/bg-curve.png'} alt="bg-curve"/>
+                src={baseUrl + '/frames/bg-curve.jpg'} alt="bg-curve"/>
             
             <section id="promo">
             

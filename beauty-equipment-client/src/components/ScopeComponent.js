@@ -10,7 +10,7 @@ function RenderImages ({images, current, quantity}) {
                 return (
                     <Col key={index}>
                         <figure className="img-container">
-                            <img src={`${baseUrl}/scopes/${image}.png`} alt={image}/>
+                            <img src={`${baseUrl}/scopes/${image}.jpg`} alt={image}/>
                         </figure>
                     </Col>
                 )

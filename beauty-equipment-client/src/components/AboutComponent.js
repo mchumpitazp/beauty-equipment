@@ -35,7 +35,7 @@ function About () {
         <React.Fragment>
 
             <img id="img-about-top" className='d-none d-sm-block'
-                src={baseUrl + '/frames/bg-curve.png'} alt="bg-curve"/>
+                src={baseUrl + '/frames/bg-curve.jpg'} alt="bg-curve"/>
 
             <section id="about">
 

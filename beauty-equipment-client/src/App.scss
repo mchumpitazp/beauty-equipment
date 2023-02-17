@@ -125,6 +125,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 200px;
 
     img {
         display: block;
@@ -372,6 +373,7 @@ footer {
 
     .img-container {
         width: 18rem;
+        height: fit-content;
     }
 
     a {
