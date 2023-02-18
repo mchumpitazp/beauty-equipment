@@ -123,8 +123,6 @@ const MemoizedRenderButtons = React.memo (
     }
 )
 
-
-
 function Headline (props) {
     const [index, setIndex] = React.useState(0)
     const [product, setProduct] = React.useState(products[index]);

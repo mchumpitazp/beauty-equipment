@@ -23,7 +23,7 @@ function Main () {
             <Header />
             <Headline toggleModal={toggleModal} setModalProduct={setModalProduct} />
             <About />
-            <Products toggle={toggleModal} setProduct={setModalProduct} />
+            <Products toggleModal={toggleModal} setModalProduct={setModalProduct} />
             <Promo toggleModal={toggleModal} setModalProduct={setModalProduct} />
             <Advantages />
             <Scope />

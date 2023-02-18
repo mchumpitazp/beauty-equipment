@@ -3,19 +3,20 @@ import { Container, Row, Col } from "reactstrap";
 import { baseUrl } from "../baseUrl";
 
 function RenderImages ({images, current, quantity}) {
-
     return (
-        images.map((image, index) => {
-            if (index >= current && index < (current+quantity)) {
-                return (
-                    <Col key={index}>
-                        <figure className="img-container">
-                            <img src={`${baseUrl}/scopes/${image}.jpg`} alt={image}/>
-                        </figure>
-                    </Col>
-                )
-            } else { return null; }
-        })
+        <Row>
+            { images.map((image, index) => {
+                if (index >= current && index < (current+quantity)) {
+                    return (
+                        <Col key={index}>
+                            <figure className="img-container">
+                                <img src={`${baseUrl}/scopes/${image}.jpg`} alt={image}/>
+                            </figure>
+                        </Col>
+                    )
+                } else { return null; }
+            }) }
+        </Row>
     )
 }
 
@@ -58,21 +59,14 @@ function Scope () {
 
     return (
         <Container id="scope" className="py-5">
-
-            <div className="d-flex justify-content-between align-items-center mb-4">
+            <header className="d-flex justify-content-between align-items-center mb-3">
                 <h4 className="m-0"><strong>Scope of application</strong></h4>
-
                 <div>
-                    <i className="btn btn-icon bi-chevron-left"
-                        onClick={handlePrevious}></i>
-                    <i className="btn btn-icon bi-chevron-right"
-                        onClick={handleNext}></i>
+                    <i className="btn btn-icon bi-chevron-left"  onClick={handlePrevious}></i>
+                    <i className="btn btn-icon bi-chevron-right" onClick={handleNext}></i>
                 </div>
-            </div>
-            
-            <Row>
-                <RenderImages images={images} current={current} quantity={quantity}/>
-            </Row>
+            </header>
+            <RenderImages images={images} current={current} quantity={quantity}/>
         </Container>
     );
 }
