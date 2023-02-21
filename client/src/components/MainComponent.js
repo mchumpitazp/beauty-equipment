@@ -16,6 +16,7 @@ import ModalCookies from "./ModalCookiesComponent";
 // Redux
 import { connect } from 'react-redux';
 import { fetchProducts } from '../redux/ActionCreators';
+import { Spinner } from "reactstrap";
 
 const mapStateToProps = state => {
     return { products: state.products }
@@ -33,36 +34,50 @@ function Main ({ products, fetchProducts }) {
     const checkCookie = document.cookie.indexOf("CookieBy=BeautyEquipment");
 
     React.useLayoutEffect(() => {
-        fetchProducts();
+        if (!products.isLoading) {
+            document.querySelector('body').style.height = 'auto';
+            document.querySelector('#root').style.height = 'auto';
+        }        
+    }, [products.isLoading]);
+
+    React.useLayoutEffect(() => {
+        setTimeout(() => fetchProducts(), 1000);
     }, [fetchProducts]);
 
-    return (
-        <React.Fragment>
-            <Header />
-            <Headline
-                products={products.products.filter(p => p.headline)}
-                productsLoading={products.isLoading}
-                toggleModal={toggleModal} 
-                setModalProduct={setModalProduct} />
-            <About />
-            <Products 
-                products={products.products.filter(p => !p.headline)}
-                productsLoading={products.isLoading}
-                toggleModal={toggleModal} 
-                setModalProduct={setModalProduct} />
-            <Promo toggleModal={toggleModal} setModalProduct={setModalProduct} />
-            <Advantages />
-            <Scope />
-            <Stages />
-            <Footer />
-            <ModalOrder modal={modal} toggle={toggleModal} product={modalProduct}/>
-
-            {
-                (checkCookie === -1) ?
-                <ModalCookies /> : null 
-            }
-        </React.Fragment>
-    );
+    if (products.isLoading) {
+        return (
+            <div id="spinner-container">
+                <Spinner type="grow"/>
+            </div>
+        )
+    } else {
+        return (
+            <React.Fragment>
+                <Header />
+                <Headline
+                    products={products.products.filter(p => p.headline)}
+                    toggleModal={toggleModal} 
+                    setModalProduct={setModalProduct} />
+                <About />
+                <Products 
+                    products={products.products.filter(p => !p.headline)}
+                    toggleModal={toggleModal} 
+                    setModalProduct={setModalProduct} />
+                <Promo toggleModal={toggleModal} setModalProduct={setModalProduct} />
+                <Advantages />
+                <Scope />
+                <Stages />
+                <Footer />
+                <ModalOrder modal={modal} toggle={toggleModal} product={modalProduct}/>
+    
+                {
+                    (checkCookie === -1) ?
+                    <ModalCookies /> : null 
+                }
+            </React.Fragment>
+        );
+    }
+    
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

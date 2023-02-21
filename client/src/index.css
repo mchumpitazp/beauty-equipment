@@ -1,6 +1,7 @@
-html, body {
+html, body, #root {
   margin: 0;
   overflow-x: hidden;
+  height: 100%;
 }
 
 body {

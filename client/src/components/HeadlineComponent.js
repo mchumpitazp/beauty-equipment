@@ -75,36 +75,32 @@ const MemoizedRenderButtons = React.memo (
 function Headline (props) {
     const [index, setIndex] = React.useState(0);
 
-    if (props.productsLoading) {
-        return null; // spinner
-    } else {
-        return (
-            <Container id='headline'>
-                <div id='headline-left'>
-                    <RenderProduct 
-                        product={props.products[index]}
-                        toggleModal={props.toggleModal}
-                        setModalProduct={props.setModalProduct} />
-                    <MemoizedRenderButtons  
-                        setIndex={setIndex}
-                        products={props.products} />
-                </div> 
-    
-                <div id='headline-right' className='d-none d-lg-block'>
-                    <img id='bg-headline' src={baseUrl + '/frames/bg-headline.jpg'} alt='bg-headline'/>
-    
-                    <Container id='headline-form-container'>
-                        <div id='headline-form'>
-                            <Row>
-                                <h5 className='mb-3'><strong>Submit your application</strong></h5>
-                            </Row>
-                            <MyForm colClassName="col-12" buttonInner="CONTACT WITH ME!"/>
-                        </div>
-                    </Container>
-                </div>
-            </Container>
-        );
-    }
+    return (
+        <Container id='headline'>
+            <div id='headline-left'>
+                <RenderProduct 
+                    product={props.products[index]}
+                    toggleModal={props.toggleModal}
+                    setModalProduct={props.setModalProduct} />
+                <MemoizedRenderButtons  
+                    setIndex={setIndex}
+                    products={props.products} />
+            </div> 
+
+            <div id='headline-right' className='d-none d-lg-block'>
+                <img id='bg-headline' src={baseUrl + '/frames/bg-headline.jpg'} alt='bg-headline'/>
+
+                <Container id='headline-form-container'>
+                    <div id='headline-form'>
+                        <Row>
+                            <h5 className='mb-3'><strong>Submit your application</strong></h5>
+                        </Row>
+                        <MyForm colClassName="col-12" buttonInner="CONTACT WITH ME!"/>
+                    </div>
+                </Container>
+            </div>
+        </Container>
+    );
 }
 
 export default Headline;

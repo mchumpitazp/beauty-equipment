@@ -86,26 +86,22 @@ function Products (props) {
         }
     }
 
-    if (props.productsLoading) {
-        return null; // spinner
-    } else {
-        return (
-            <Container id="products" className="py-5">
-                <header className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="m-0"><strong>The most interesting offers</strong></h4>
-                    <div>
-                        <i className="btn btn-icon bi-chevron-left"  onClick={handlePrevious}></i>
-                        <i className="btn btn-icon bi-chevron-right" onClick={handleNext}></i>
-                    </div>
-                </header>
-                <RenderProducts 
-                    {...props}
-                    products={props.products}
-                    current={current}
-                    quantity={quantity} />
-            </Container>
-        );
-    }
+    return (
+        <Container id="products" className="py-5">
+            <header className="d-flex justify-content-between align-items-center mb-3">
+                <h4 className="m-0"><strong>The most interesting offers</strong></h4>
+                <div>
+                    <i className="btn btn-icon bi-chevron-left"  onClick={handlePrevious}></i>
+                    <i className="btn btn-icon bi-chevron-right" onClick={handleNext}></i>
+                </div>
+            </header>
+            <RenderProducts 
+                {...props}
+                products={props.products}
+                current={current}
+                quantity={quantity} />
+        </Container>
+    );
 }
 
 export default Products;

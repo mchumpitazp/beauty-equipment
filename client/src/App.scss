@@ -21,6 +21,16 @@ p  { font-size: 0.75rem; }
     background: linear-gradient(180deg, $red-dark 0%, $red 80.21%);
 }
 
+// Spinner
+#spinner-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .spinner-grow { color: $red; }
+}
+
 // Sections
 
 .navbar {
