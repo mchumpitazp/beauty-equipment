@@ -21,7 +21,7 @@ function RenderImages ({images, current, quantity}) {
 }
 
 function Scope () {
-
+    const images = ['scope1', 'scope2', 'scope3', 'scope4', 'scope5'];
     const [current, setCurrent] = React.useState(0);
     const [quantity, setQuantity] = React.useState();
 
@@ -38,12 +38,8 @@ function Scope () {
         handleImages();
 
         window.addEventListener("resize", handleImages);
-        return () => {
-            window.removeEventListener("resize", handleImages);
-        }
+        return () => { window.removeEventListener("resize", handleImages); }
     }, []);
-
-    const images = ['scope1', 'scope2', 'scope3', 'scope4', 'scope5'];
 
     const handleNext = () => {
         if (current + quantity < images.length) {

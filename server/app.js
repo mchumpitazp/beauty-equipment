@@ -5,17 +5,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var helmet = require('helmet');
+var mongoose = require('mongoose');
+mongoose.set('strictQuery', true);
+var productsRouter = require('./routes/productsRouter');
+var ordersRouter = require('./routes/ordersRouter');
 
-var app = express();
-
-// connect to port
+// connect to database and port
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, (_) => {
-  console.log(`Server started on port ${process.env.PORT}`);
-  console.log(app.get('env'));
-});
+const URL = 'mongodb://localhost:27017/be';
+const connect = mongoose.connect(URL);
+connect.then(() => {
+  console.log('Database connected');
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+    console.log(app.get('env'));
+  });  
+}, (err) => console.log(err));
 
 // view engine setup
+var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -24,9 +33,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-  origin: '*'
-}));
+
+//app.use(cors());
+app.use(helmet());
+app.use('/api/products-info', productsRouter);
+app.use('/api/orders', ordersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

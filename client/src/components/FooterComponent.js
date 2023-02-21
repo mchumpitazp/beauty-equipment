@@ -8,7 +8,7 @@ function Footer () {
 
     React.useEffect(() => {
         const handleFooter = () => {
-            if (window.innerWidth < 576) {
+            if (window.innerWidth < 992) {
                 footerRef.current.classList.remove('align-items-start');
                 footerRef.current.classList.add('align-items-center');
             } else {
@@ -26,7 +26,7 @@ function Footer () {
         <footer>
             <Container className="py-5 px-4">
                 <Row>
-                    <Col sm className="order-sm-2">
+                    <Col sm className="order-md-2">
                         <h5 className="mb-2">CONTACT</h5>
                         <div className="d-flex flex-column justify-content-around">
                             <div className="d-flex align-items-center my-1">
@@ -55,7 +55,7 @@ function Footer () {
                             </div>
                         </div>
                     </Col>
-                    <div ref={footerRef} className="col order-sm-1 mt-3 d-flex flex-column justify-content-between">
+                    <div ref={footerRef} className="col order-md-1 mt-3 d-flex flex-column justify-content-between">
                         <figure className="img-container">
                             <img src={baseUrl + "/frames/logo-footer.png"} alt="logo-footer"/>
                         </figure>

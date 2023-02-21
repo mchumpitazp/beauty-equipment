@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Row, Col, FormGroup, Label, Input, Button, Alert, FormFeedback, Spinner } from 'reactstrap';
+import { baseUrl } from "../baseUrl";
 
 function MyForm ({colClassName, setId=false, initProduct='', buttonInner}) {
     const [name, setName] = React.useState('');
@@ -11,6 +12,7 @@ function MyForm ({colClassName, setId=false, initProduct='', buttonInner}) {
     const [productVal, setProductVal] = React.useState('');
 
     const [success, setSuccess] = React.useState(false);
+    const [failed, setFailed] = React.useState(false);
     const [validation, setValidation] = React.useState(false);
     const [spinnerOpen, setSpinnerOpen] = React.useState(false);
 
@@ -19,31 +21,68 @@ function MyForm ({colClassName, setId=false, initProduct='', buttonInner}) {
     }, [initProduct]);
 
     React.useEffect(() => {
-        let timeout;
-
         if (validation) {
-            timeout = setTimeout(() => {
-                setSpinnerOpen(false);
-                setSuccess(true);
-                clearInputs();
-            }, 800);
+            handleValidSubmit();
+            setValidation(false);
         }
-        return () => clearTimeout(timeout);
-    }, [validation]);
+        // eslint-disable-next-line
+    }, [validation]); 
 
     React.useEffect(() => {
         let timeout;
-
         if (success) {
-            timeout = setTimeout(() => { setSuccess(false); }, 1500);
+            timeout = setTimeout(() => { setSuccess(false); }, 2000);
         }
         return () => clearTimeout(timeout);
     }, [success]);
+
+    React.useEffect(() => {
+        let timeout;
+        if (failed) {
+            timeout = setTimeout(() => { setFailed(false) }, 2000);
+        }
+        return () => clearTimeout(timeout);
+    }, [failed])
 
     const clearInputs = () => {
         setName('');
         setEmail('');
         setProduct('');
+    };
+
+    const handleValidSubmit = () => {
+        const newOrder = {
+            name: name,
+            email: email,
+            product: product
+        };
+
+        return fetch(baseUrl + '/orders', {
+            method: 'POST',
+            body: JSON.stringify(newOrder),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            setSpinnerOpen(false);
+
+            if (response.status === 200) {
+                clearInputs();
+                setSuccess(true);
+            } else {
+                setFailed(true);
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .catch(error => {
+            setSpinnerOpen(false);
+            console.log('Error POST method: ', error.message);
+        })
     };
 
     const validateForm = () => {
