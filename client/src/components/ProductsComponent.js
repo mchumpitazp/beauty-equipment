@@ -1,7 +1,6 @@
 import React from "react";
 import ReactReadMoreReadLess from 'react-read-more-read-less';
 import { Button, Col, Container, Row } from "reactstrap";
-import { baseUrl } from "../baseUrl";
 
 function RenderProducts (props) {
     
@@ -31,7 +30,7 @@ function RenderProducts (props) {
                             onMouseLeave={handleHover}>   
     
                             <figure className="img-container">
-                                <img src={baseUrl + product.image} alt={product.name}/>
+                                <img src={'/images' + product.image} alt={product.name}/>
                             </figure>
                             <h6><strong>{product.title}</strong></h6>
                             <h5><strong>{`€ ${product.price}`}</strong></h5>

@@ -4,7 +4,7 @@ import { baseUrl } from '../baseUrl';
 export const fetchProducts = () => (dispatch) => {
     dispatch(productsLoading(true));
 
-    return fetch(baseUrl + '/products-info')
+    return fetch(baseUrl + '/products')
         .then(response => {
             if (response.ok) {
                 return response;

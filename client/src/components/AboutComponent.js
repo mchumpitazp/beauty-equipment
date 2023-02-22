@@ -1,5 +1,4 @@
 import React from "react";
-import { baseUrl } from "../baseUrl";
 
 function About () {
     const imgRef = React.useRef(null);
@@ -35,13 +34,13 @@ function About () {
         <React.Fragment>
 
             <img id="img-about-top" className='d-none d-sm-block'
-                src={baseUrl + '/frames/bg-curve.jpg'} alt="bg-curve"/>
+                src='/images/frames/bg-curve.jpg' alt="bg-curve"/>
 
             <section id="about">
 
                 <img ref={imgRef} 
                     className='d-none d-sm-block'
-                    src={baseUrl + '/frames/bg-about.png'} alt="bg-about" 
+                    src='/images/frames/bg-about.png' alt="bg-about" 
                     onLoad={(image) => initContainer(image)}/>
 
                 <div ref={containerRef} className='container'>

@@ -27,22 +27,37 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 function Main ({ products, fetchProducts }) {
+    const [isLoading, setLoading] = React.useState(true);
     const [modal, setModal] = React.useState(false);
     const [modalProduct, setModalProduct] = React.useState('');
     const toggleModal = () => setModal(!modal);
 
     const checkCookie = document.cookie.indexOf("CookieBy=BeautyEquipment");
 
-    React.useLayoutEffect(() => {
+    React.useLayoutEffect(() => fetchProducts(), [fetchProducts]);
+
+    React.useEffect(() => {
         if (!products.isLoading) {
-            document.querySelector('body').style.height = 'auto';
-            document.querySelector('#root').style.height = 'auto';
+            products.products.forEach(p => {
+                const img = new Image();
+                img.src = '/images' + p.image;
+
+                if (!p.headline) {
+                    const img2 = new Image();
+                    img2.src = '/images' + p.image.replace('1.', '2.');
+                }
+            });
+            setTimeout(() => setLoading(false), 1000);
         }        
     }, [products.isLoading]);
 
-    React.useLayoutEffect(() => {
-        setTimeout(() => fetchProducts(), 1000);
-    }, [fetchProducts]);
+    React.useEffect(() =>{
+        if (!isLoading) {
+            document.querySelector('#spinner-container').style.display = 'none';
+            document.querySelector('body').style.height = 'auto';
+            document.querySelector('html').style.overflowY = 'auto';
+        }
+    }, [isLoading]);
 
     if (products.isLoading) {
         return (
@@ -53,6 +68,9 @@ function Main ({ products, fetchProducts }) {
     } else {
         return (
             <React.Fragment>
+                <div id="spinner-container">
+                    <Spinner type="grow"/>
+                </div>
                 <Header />
                 <Headline
                     products={products.products.filter(p => p.headline)}

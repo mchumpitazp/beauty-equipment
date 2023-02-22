@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
-import { baseUrl } from "../baseUrl";
 
 function Footer () {
 
@@ -57,7 +56,7 @@ function Footer () {
                     </Col>
                     <div ref={footerRef} className="col order-md-1 mt-3 d-flex flex-column justify-content-between">
                         <figure className="img-container">
-                            <img src={baseUrl + "/frames/logo-footer.png"} alt="logo-footer"/>
+                            <img src="/images/frames/logo-footer.png" alt="logo-footer"/>
                         </figure>
                         
                         <p className="m-2 align-content-start">Beauty Equipment © 2023 - All rights reserved.</p>

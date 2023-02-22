@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 app.use(helmet());
-app.use('/api/products-info', productsRouter);
+app.use('/api/products', productsRouter);
 app.use('/api/orders', ordersRouter);
 
 // catch 404 and forward to error handler

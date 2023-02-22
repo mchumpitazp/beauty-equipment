@@ -1,7 +1,6 @@
 import React from 'react';
 import MyForm from './FormComponent';
 import { Button, Col, Row, Container } from 'reactstrap';
-import { baseUrl } from '../baseUrl';
 import $ from 'jquery';
 
 function RenderProduct (props) {
@@ -16,7 +15,7 @@ function RenderProduct (props) {
         <Row className='align-items-center'>
             <Col sm>
                 <div className='img-container'> 
-                    <img src={baseUrl + props.product.image} alt={props.product.name}/>
+                    <img src={'/images' + props.product.image} alt={props.product.name}/>
                 </div>
             </Col>
 
@@ -88,7 +87,7 @@ function Headline (props) {
             </div> 
 
             <div id='headline-right' className='d-none d-lg-block'>
-                <img id='bg-headline' src={baseUrl + '/frames/bg-headline.jpg'} alt='bg-headline'/>
+                <img id='bg-headline' src='/images/frames/bg-headline.jpg' alt='bg-headline'/>
 
                 <Container id='headline-form-container'>
                     <div id='headline-form'>
