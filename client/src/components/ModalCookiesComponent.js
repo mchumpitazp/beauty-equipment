@@ -7,7 +7,7 @@ function ModalCookies () {
     const toggle = () => setCookies(!cookies);
 
     const acceptCookies = () => {
-        document.cookie = "CookieBy=BeautyEquipment; max-age=" + 60*60*24;
+        document.cookie = "CookieBy=BeautyEquipment; max-age=" + 60*60*24*7;
 
         if (document.cookie) {
             toggle();
@@ -20,7 +20,7 @@ function ModalCookies () {
         <Modal id="modal-cookies" isOpen={cookies} toggle={toggle} centered>
             <ModalHeader toggle={toggle}>Cookies consent</ModalHeader>
             <ModalBody className="d-flex flex-column align-items-center my-2">
-                <img src={`${baseUrl}/frames/cookies.jpg`} alt="cookies" width="100px"/>
+                <img src={'/images/frames/cookies.jpg'} alt="cookies" width="100px"/>
                 <p className="mx-5 my-3">This website uses cookies in order to offer you the best experience on our site.</p>
                 <Row className="mx-5">
                     <Col xs className="d-flex justify-content-center">

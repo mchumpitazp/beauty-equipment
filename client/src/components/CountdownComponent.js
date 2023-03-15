@@ -27,7 +27,7 @@ function Countdown () {
         let month = monthNow;
         let year  = new Date().getFullYear();
 
-        if (dateNow > 14) {
+        if (dateNow >= 14) {
             if (monthNow === 11) {
                 month = 0;
                 year++;
