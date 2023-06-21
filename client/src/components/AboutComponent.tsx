@@ -4,22 +4,24 @@ function About () {
     const imgRef = React.useRef(null);
     const containerRef = React.useRef(null);
 
-    const initContainer = (image) => {
+    const initContainer = (image: React.SyntheticEvent<HTMLImageElement>) => {
+        const container = containerRef.current! as HTMLElement;
         if (window.innerWidth < 576) {
-            containerRef.current.style.height = '300px'; 
+            container.style.height = '300px'; 
         }
-        else {
-            containerRef.current.style.height = image.target.clientHeight + 'px';
+        else {
+            container.style.height = (image.target as HTMLElement).clientHeight + 'px';
         }   
     }
 
     React.useEffect(() => {
         const handleContainer = () => {
+            const container = containerRef.current! as HTMLElement;
             if (window.innerWidth < 576) {
-                containerRef.current.style.height = '300px'; 
+                container.style.height = '300px'; 
             }
             else {
-                containerRef.current.style.height = imgRef.current.height + 'px';
+                container.style.height = (imgRef.current! as HTMLImageElement).height + 'px';
             }
         }
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody, Row, Col, Button } from "reactstrap";
-import { baseUrl } from "../baseUrl";
 
 function ModalCookies () {
     const [cookies, setCookies] = React.useState(true);
