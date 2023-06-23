@@ -52,7 +52,6 @@ function Main () {
 
     React.useEffect(() =>{
         if (!isLoading) {
-            (document.querySelector('#spinner-container') as HTMLElement ).style.display = 'none';
             (document.querySelector('body') as HTMLElement).style.height = 'auto';
             (document.querySelector('html') as HTMLElement).style.overflowY = 'auto';
         }
@@ -67,9 +66,6 @@ function Main () {
     } else {
         return (
             <React.Fragment>
-                <div id="spinner-container">
-                    <Spinner type="grow"/>
-                </div>
                 <Header />
                 <Headline
                     products={products.products.filter((p: { headline: boolean; }) => p.headline)}

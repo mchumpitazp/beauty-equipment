@@ -2,16 +2,12 @@ import React from "react";
 import { Button, Col, Container, Row } from "reactstrap";
 import Countdown from "./CountdownComponent";
 
-function Promo (props) {
+interface PromoProps {
+    toggleModal: () => void,
+    setModalProduct: (product: string) => void
+}
 
-    // v1: Scroll until form and focus on product
-    /* const orderProduct = () => {
-        const form = document.querySelector('#form');
-        form.scrollIntoView({behavior: 'smooth'});      
-
-        form.querySelectorAll('input').forEach(input => input.focus());
-    } */
-
+function Promo (props: PromoProps) {
     const handleClick = () => {
         props.toggleModal();
         props.setModalProduct('');

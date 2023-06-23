@@ -7,12 +7,13 @@ function Footer () {
 
     React.useEffect(() => {
         const handleFooter = () => {
+            const footer = footerRef.current! as HTMLDivElement;
             if (window.innerWidth < 992) {
-                footerRef.current.classList.remove('align-items-start');
-                footerRef.current.classList.add('align-items-center');
+                footer.classList.remove('align-items-start');
+                footer.classList.add('align-items-center');
             } else {
-                footerRef.current.classList.remove('align-items-center');
-                footerRef.current.classList.add('align-items-start');
+                footer.classList.remove('align-items-center');
+                footer.classList.add('align-items-start');
             }
         }
         handleFooter();

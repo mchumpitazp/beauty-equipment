@@ -1,13 +1,21 @@
-import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import MyForm from "./FormComponent";
 
-function ModalOrder ({ modal, toggle, product }) {
+interface ModalOrderProps {
+    modal: boolean,
+    toggle: () => void,
+    product: string
+}
+
+function ModalOrder (props: ModalOrderProps) {
     return (
-        <Modal isOpen={modal} toggle={toggle} centered>
-            <ModalHeader toggle={toggle}>New product order</ModalHeader>
+        <Modal isOpen={props.modal} toggle={props.toggle} centered>
+            <ModalHeader toggle={props.toggle}>New product order</ModalHeader>
             <ModalBody>
-                <MyForm colClassName="col-12" initProduct={product} buttonInner="ORDER PRODUCT"/>
+                <MyForm colClassName="col-12"
+                        setId={false}
+                        initProduct={props.product}
+                        buttonInner="ORDER PRODUCT"/>
             </ModalBody>
         </Modal>
     )

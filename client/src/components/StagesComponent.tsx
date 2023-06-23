@@ -55,7 +55,10 @@ function Stages () {
                         <Row>
                             <h5 className='mb-3'><strong>Submit your application</strong></h5>
                         </Row>
-                        <MyForm colClassName="col-12 col-md-3" setId={true} buttonInner="CONTACT WITH ME!"/>
+                        <MyForm colClassName="col-12 col-md-3"
+                                setId={true}
+                                initProduct=""
+                                buttonInner="CONTACT WITH ME!"/>
                         {/* <Form>
                             <Row className="align-items-center">
                                 <Col className="col-12 col-md-3">
